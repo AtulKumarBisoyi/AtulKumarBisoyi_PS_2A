@@ -1,36 +1,26 @@
 #include<stdio.h>
+void gcd(int,int);
 void main()
 {
-    int a,b,c[100],d[100],i,j,m=0,n=0,e[100],k=0;
+    int a,b;
     printf("Enter both number=");
     scanf("%d%d",&a,&b);
     printf("gcd of the two numbers=\n");
-    for(i=1;i<=a;i++)
+    gcd(a,b);
+    
+}
+void gcd(int p,int q)
+{ 
+    int i,j, gcd;
+    for(i=1;i<p;i++)
     {
-        if(a%i==0)
+        for( j=1;j<q;j++)
         {
-            c[m]=i;
-            m++;
-        }
-    }
-    for(i=1;i<=b;i++)
-    {
-        if(b%i==0)
-        {
-            d[n]=i;
-            n++;
-        }
-    }
-    for(i=0;i<m;i++)
-    {
-        for(j=0;j<n;j++)
-        {
-            if(c[i]==d[j])
+            if(p%i==0 && q%i==0)
             {
-                e[k]=c[i];
-                k++;
+                gcd=i;
             }
         }
     }
-   printf("%d",e[k-1]);
+    printf("%d",gcd);
 }
