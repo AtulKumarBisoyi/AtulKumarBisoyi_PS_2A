@@ -1,39 +1,22 @@
-#include<stdio.h>
-void main()
-{
-    int left,right,n,i,j,copy,a,c=0;
-    printf("Enter the range = ");
-    scanf("%d%d",&left,&right);
-    for(i=left;i<=right;i++)
-    {
-        n=i;
-        copy=i;
-        while(n>0)
-        {
-            a=n%10;
-            n=n/10;
-            if(a!=0)
-            {
-                if(copy%a==0)
-                {
-                    c=1;
-                    continue;
-                }
-                else
-                {
-                    c=0;
+class Solution {
+public:
+    vector<int> selfDividingNumbers(int left, int right) {
+        vector<int> result;
+        for(int num = left; num <= right; num++){
+            bool selfDividing = true;
+            int workNum = num;
+            while(workNum){
+                //n-th digit is 0 or n-th digit of "num" cannot divide "num"
+                if(workNum%10==0 || num%(workNum%10)!=0){
+                    selfDividing = false;
                     break;
                 }
+                //if workNum<10, there won't be next iteration
+                workNum/=10;
             }
-            else
-            {
-                c=0;
-                break;
-            }
+            if(selfDividing) result.push_back(num);
         }
-        if(c==1)
-        {
-            printf("%d ",i);
-        }
+        return result;
     }
-}
+};
+
